@@ -7,10 +7,42 @@
 </head>
 <body>
     <h1>Open Chrome Settings</h1>
-    <button onclick="openChromeSettings()">Open Protected Content Settings</button>
+    
+    <!-- Method 1: Using a button with JavaScript -->
+    <button onclick="openChromeSettings()">Open with Button</button>
+    <br><br>
+    
+    <!-- Method 2: Using a link with target="_blank" -->
+    <a href="javascript:void(0);" onclick="openLinkWithAnchor()" id="openLink">Open with Anchor Tag</a>
+    <br><br>
+
+    <!-- Method 3: Using an image as a clickable link -->
+    <img src="https://via.placeholder.com/150" alt="Open Chrome Settings" onclick="openChromeSettings()" style="cursor:pointer;">
+    <p>Click the image above to open Chrome settings.</p>
+    
+    <!-- Method 4: Using a context menu with JavaScript -->
+    <button oncontextmenu="openWithContextMenu(event)">Right Click to Open</button>
 
     <script>
+        // Method 1: Using a button with JavaScript
         function openChromeSettings() {
+            window.open('chrome://settings/content/protectedContent', '_blank');
+        }
+
+        // Method 2: Using a link with target="_blank"
+        function openLinkWithAnchor() {
+            let link = document.createElement('a');
+            link.href = 'chrome://settings/content/protectedContent';
+            link.target = '_blank';
+            link.click();
+        }
+
+        // Method 3: Using an image as a clickable link
+        // (Same as Method 1 since it shares the function openChromeSettings)
+
+        // Method 4: Using a context menu with JavaScript
+        function openWithContextMenu(event) {
+            event.preventDefault(); // Prevent the default context menu
             window.open('chrome://settings/content/protectedContent', '_blank');
         }
     </script>
